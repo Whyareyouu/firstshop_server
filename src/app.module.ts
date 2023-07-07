@@ -4,6 +4,9 @@ import {ConfigModule} from "@nestjs/config";
 import { UsersModule } from './users/users.module';
 import {User} from "./users/users.model";
 import { RolesModule } from './roles/roles.module';
+import {Role} from "./roles/roles.model";
+import {UserRoles} from "./roles/user-role.model";
+import { AuthModule } from './auth/auth.module';
 
 
 @Module({
@@ -16,11 +19,12 @@ import { RolesModule } from './roles/roles.module';
             username: process.env.DB_USERNAME,
             password: process.env.DB_PASSWORD,
             database: process.env.DB_NAME,
-            models: [User],
+            models: [User,Role, UserRoles],
             autoLoadModels: true,
         }),
         UsersModule,
         RolesModule,
+        AuthModule,
     ],
     controllers: [],
     providers: [],
