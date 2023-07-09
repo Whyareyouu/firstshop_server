@@ -1,10 +1,10 @@
-import {Body, Controller, Get, Param, Patch, Post, Put, UploadedFile, UseGuards, UseInterceptors} from '@nestjs/common';
+import {Body, Controller, Get, Param, Patch, Post, UploadedFile, UseGuards, UseInterceptors} from '@nestjs/common';
 import {CreateProductDto} from "./dto/create-product.dto";
 import {ProductsService} from "./products.service";
 import {FileInterceptor} from "@nestjs/platform-express";
 import {RolesGuard} from "../auth/roles.guard";
 import {Roles} from "../auth/roles-auth.decorator";
-import {ApiBody, ApiOperation, ApiProperty, ApiResponse, ApiTags} from "@nestjs/swagger";
+import {ApiOperation, ApiResponse, ApiTags} from "@nestjs/swagger";
 import {Product} from "./product.model";
 
 @ApiTags('products')
@@ -19,7 +19,7 @@ export class ProductsController {
     @Roles('admin')
     @UseGuards(RolesGuard)
     @UseInterceptors(FileInterceptor('image'))
-    createProduct(@Body() dto: CreateProductDto, @UploadedFile() image){
+    createProduct(@Body() dto: CreateProductDto, @UploadedFile() image) {
         return this.productService.create(dto, image)
     }
 
@@ -38,5 +38,12 @@ export class ProductsController {
     @Get()
     getAllProducts() {
         return this.productService.getAllProducts()
+    }
+
+    @ApiOperation({summary: 'Get product by id'})
+    @ApiResponse({status: 200, type: Product})
+    @Get('/:id')
+    getProductById(@Param("id") id: number) {
+        return this.productService.getProductById(id)
     }
 }

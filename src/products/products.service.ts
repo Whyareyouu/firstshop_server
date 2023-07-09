@@ -8,11 +8,13 @@ import {FileService} from "../file/file.service";
 export class ProductsService {
     constructor(@InjectModel(Product) private productRepository: typeof Product, private fileService: FileService) {
     }
+
     async create(dto: CreateProductDto, image) {
         const fileName = await this.fileService.createFile(image)
         const product = await this.productRepository.create({...dto, image: fileName})
         return product
     }
+
     async updateImage(id: number, image) {
         try {
             const fileName = await this.fileService.createFile(image)
@@ -24,8 +26,13 @@ export class ProductsService {
         }
     }
 
-    async getAllProducts () {
+    async getAllProducts() {
         const products = await this.productRepository.findAll({include: {all: true}})
         return products
+    }
+
+    async getProductById(id: number) {
+        const product = await this.productRepository.findOne({where: {id}, include: {all: true}})
+        return product
     }
 }
