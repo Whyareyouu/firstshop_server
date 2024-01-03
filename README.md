@@ -1,73 +1,47 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+## Описание учебного проекта: SPA с использованием Nest.js и PostgreSQL
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+Мой учебный проект представляет собой современное веб-приложение, разработанное на базе Nest.js и использующее PostgreSQL в качестве базы данных. Проект ориентирован на развитие моих навыков веб-разработки и практическое применение полученных знаний.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
-## Description
+## Конфигурация .env переменных
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+Для запуска проекта и подключения к базе данных, вы должны использовать файл среды (`.env`), где хранятся конфигурационные переменные. Вот ключевые переменные, которые я использовал:
 
-## Installation
+-   **PORT**: Переменная, определяющая порт, на котором будет работать ваше приложение. Например, `PORT=3000`.
+    
+-   **DB_USERNAME**: Переменная, содержащая имя пользователя для подключения к базе данных PostgreSQL. Например, `DB_USERNAME=myuser`.
+    
+-   **DB_NAME**: Переменная, определяющая имя базы данных PostgreSQL, с которой ваше приложение будет взаимодействовать. Например, `DB_NAME=mydatabase`.
+    
+-   **DB_PASSWORD**: Переменная, содержащая пароль для доступа к базе данных PostgreSQL. Например, `DB_PASSWORD=mypassword`.
+    
+-   **DB_HOST**: Переменная, указывающая хост базы данных PostgreSQL, к которому приложение должно подключаться. Например, `DB_HOST=localhost`.
+    
+-   **PRIVATE_KEY**: Переменная, содержащая приватный ключ, используемый для подписи и верификации JSON Web Token (JWT). Например, `PRIVATE_KEY=myprivatekey`.
+    
+-   **DB_PORT**: Переменная, определяющая порт, на котором работает база данных PostgreSQL. Например, `DB_PORT=5432`.
 
-```bash
-$ yarn install
-```
+### Основная функциональность проекта:
 
-## Running the app
+-   **Авторизация и регистрация пользователей**: В рамках учебного проекта реализована функциональность авторизации и регистрации пользователей с использованием JSON Web Token (JWT). После регистрации пользователь получает уникальный токен, который используется для доступа к защищенным ресурсам.
+    
+-   **Управление ролями пользователей**: В проекте предусмотрена возможность изменения ролей пользователей, чтобы практиковаться в работе с различными уровнями доступа.
+    
+-   **Добавление и управление товарами**: Пользователи могут добавлять новые товары в систему, просматривать список товаров и вносить изменения в информацию о товарах.
+    
 
-```bash
-# development
-$ yarn run start
+### Технологический стек:
 
-# watch mode
-$ yarn run start:dev
+-   **Nest.js**: Выбор Nest.js для проекта обусловлен желанием познакомиться с этим мощным фреймворком для серверной разработки на Node.js и TypeScript.
+    
+-   **PostgreSQL**: Использование PostgreSQL поможет мне понять принципы работы реляционных баз данных и ORM.
+    
+-   **Sequelize**: Выбор Sequelize для работы с базой данных обусловлен стремлением научиться использовать ORM вместо прямых SQL-запросов.
+    
+-   **JSON Web Token (JWT)**: В проекте применяется JWT для реализации аутентификации пользователей. JWT позволяет генерировать уникальные токены для авторизации пользователей и обеспечивает безопасную передачу данных между клиентом и сервером.  
 
-# production mode
-$ yarn run start:prod
-```
+### Заключение:
 
-## Test
+Мой учебный проект предоставляет мне уникальную возможность развивать навыки веб-разработки и применять полученные знания на практике. Основная цель проекта - изучение и понимание работы различных технологий в контексте создания полноценного SPA с использованием Nest.js и PostgreSQL. Этот проект дает мне ценный опыт, который я готов применить в будущих реальных проектах и построении карьеры в сфере веб-разработки.
 
-```bash
-# unit tests
-$ yarn run test
-
-# e2e tests
-$ yarn run test:e2e
-
-# test coverage
-$ yarn run test:cov
-```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
+#### Ссылка на документацию(swagger): https://firstshopserver.up.railway.app/api/docs
